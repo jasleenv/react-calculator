@@ -1,0 +1,27 @@
+.number {
+  border: 1px solid purple
+}
+
+.button {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+}
+
+.operation {
+  border: 1px solid orange;
+}
+
+.results-container {
+  margin:10px 5px;
+}
+.numbers-container {
+  display:grid;
+  grid-template-columns: 40px 40px 40px;
+}
+
+.calculator {
+  border:1px solid red;
+  margin: auto;
+  width: 400px;
+}
