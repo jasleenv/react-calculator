@@ -1,62 +1,66 @@
 
 import React, { Component } from 'react'
 import './App.css';
-import Delete from "./Components/Clear"
-import Equals from "./Components/Equals"
-import Input from "./Components/Input"
-import Number from "./Components/Number"
-import Operation from "./Components/Operation"
+import KeyPad from "./Components/KeyPad"
 import Results from "./Components/Results"
 
 
 
-
 export default class App extends Component {
-  constructor(){
+  constructor() {
     super()
+
     this.state = {
-      recentlyPressedValue:"",
-      recentOperation:"",
-      input:0,
-      result:"",
-      positive: true
+      results: ""
     }
   }
-calculateResults = () => {}
-inputNumber = () => {}
-inputOperation = () => {}
+
+  calculate = () => {
+    try {
+      this.setState({
+        results: (eval(this.state.results) || "") + ""
+      })
+    } catch (e) {
+      this.setState({
+        results: "error"
+      })
+    }
+  }
+
+  reset = () => {
+    this.setState({
+      results: ""
+    })
+  }
+
+  backspace = () => {
+    this.setState({
+      results: this.state.results.slice(0, -1)
+    })
+  }
+
+  onClick = button => {
+    if (button === "=") {
+      this.calculate()
+    } else if (button === "C") {
+      this.reset()
+    } else if (button === "CE") {
+      this.backspace()
+    } else {
+      this.setState({
+        results: this.state.results + button
+      })
+    }
+  }
 
   render() {
     return (
-      <div classsName='calculator'>
-        <section className="results-container">
-          <Input digit={this.state.recentlyPressedValue}/>
-          <Results result={this.state.result}/>
-        </section>
-        <section className='numbers-container'>
-          <Number value={1}/>
-          <Number value={2}/>
-          <Number value={3}/>
-          <Number value={4}/>
-          <Number value={5}/>
-          <Number value={6}/>
-          <Number value={7}/>
-          <Number value={8}/>
-          <Number value={9}/>
-          <Number value={0}/>
-          <Number value='.'/>
-        </section>
-        <section className='operation-container'>
-          <Operation op='x'/>
-          <Operation op='%'/>
-          <Operation op='+'/>
-          <Operation op='-'/>
-        </section>
-        <section className='eq-container'>
-          <Delete/>
-          <Equals/>
+      <div>
+        <div className='calculator'>
+          <Results results={this.state.results} />
+          <KeyPad onClick={this.onClick} />
+        </div>
 
-        </section>
       </div>
     )
   }
