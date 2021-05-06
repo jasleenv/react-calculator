@@ -1,0 +1,40 @@
+.results {
+ 
+  background-color: rgb(255, 213, 242);
+  width: 100%;
+
+}
+
+.results p {
+  height:110px;
+  font-size: 3rem;
+  margin: 3px;
+  border: 2px;
+  border-style: solid;
+ 
+
+
+}
+
+.calculator{
+  max-width: 400px;
+  margin: auto;
+  overflow-wrap:break-word;
+  hyphens:auto;
+  white-space:normal;
+  align-content: center;
+
+}
+
+.button {
+  display: block;
+  background-color: rgb(255, 185, 237);
+}
+
+button { 
+  width: 25%;
+  height: 60px;
+  font-size: 30px;
+  background-color: rebeccapurple;
+
+}

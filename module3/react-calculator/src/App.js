@@ -6,6 +6,7 @@ import Results from "./Components/Results"
 
 
 
+
 export default class App extends Component {
   constructor() {
     super()
@@ -14,6 +15,7 @@ export default class App extends Component {
       results: ""
     }
   }
+
 
   calculate = () => {
     try {
@@ -42,7 +44,7 @@ export default class App extends Component {
   onClick = button => {
     if (button === "=") {
       this.calculate()
-    } else if (button === "C") {
+    } else if (button === "AC") {
       this.reset()
     } else if (button === "CE") {
       this.backspace()
@@ -57,7 +59,13 @@ export default class App extends Component {
     return (
       <div>
         <div className='calculator'>
-          <Results results={this.state.results} />
+          <h1>Simple React Calculator</h1>
+          <p>CE=Back Space
+            AC= All Clear
+            Can Use +/- Integers
+          </p>
+          
+        <Results results={this.state.results} />
           <KeyPad onClick={this.onClick} />
         </div>
 
