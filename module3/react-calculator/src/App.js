@@ -19,6 +19,8 @@ export default class App extends Component {
 
   calculate = () => {
     try {
+      // What happens if I try to enter 0 + 0?
+      // The || operator here means I can never see a 0 on your display!
       this.setState({
         results: (eval(this.state.results) || "") + ""
       })
